@@ -6,7 +6,7 @@ import { AbstractAppTestSuite } from '../abstract-app-test-suite';
 import { GqlClient, HttpClient } from '../clients';
 import { UserPerson } from '../types';
 
-export abstract class AbstractPersona<User extends UserPerson = any> {
+export abstract class AbstractPersona<User extends UserPerson<any> = any> {
   public jwt: string;
   public user: User;
   public suite: AbstractAppTestSuite;
