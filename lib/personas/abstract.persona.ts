@@ -1,6 +1,4 @@
 import { ObjectId } from 'bson';
-import { Model } from 'mongoose';
-import { getModelToken } from '@nestjs/mongoose';
 import { Type } from '@nestjs/common/interfaces/type.interface';
 import { AbstractAppTestSuite } from '../abstract-app-test-suite';
 import { GqlClient, HttpClient } from '../clients';
@@ -76,9 +74,9 @@ export abstract class AbstractPersona<User extends UserPerson<any> = any> {
     return this.suite.app.get(typeOrToken, options);
   }
 
-  public getModel<T>(modelName: string): Model<T> {
-    return this.getProvider(getModelToken(modelName));
-  }
+  // public getModel<T>(modelName: string): Model<T> {
+  //   return this.getProvider(getModelToken(modelName));
+  // }
 
   public setUserSub(sub: string) {
     if (!this.user) {

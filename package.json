@@ -1,6 +1,6 @@
 {
   "name": "@nestjs-toolkit/test-suite",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Test suite for NestJS applications",
   "author": "Valmir Barbosa",
   "license": "MIT",
@@ -21,8 +21,12 @@
     "@nestjs-toolkit/base": "*",
     "@nestjs/common": "^8.0.0 || ^9.0.0",
     "@nestjs/platform-fastify": "*",
-    "collect.js": "*",
-    "form-data": "^4.0.0"
+    "collect.js": "*"
+  },
+  "dependencies": {
+    "bson": "^5.4.0",
+    "form-data": "^4.0.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@nestjs-toolkit/base": "^2.0.1",
@@ -32,7 +36,6 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/graphql": "^11.0.5",
-    "@nestjs/mongoose": "^9.2.2",
     "@nestjs/platform-fastify": "^9.4.1",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
@@ -40,20 +43,17 @@
     "@types/node": "18.16.12",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
-    "bson": "^5.3.0",
     "bull": "^4.10.4",
     "collect.js": "^4.36.1",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "form-data": "^4.0.0",
     "graphql": "^16.6.0",
     "jest": "29.5.0",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.43",
-    "mongoose": "^7.2.0",
     "prettier": "^2.3.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^5.0.1",

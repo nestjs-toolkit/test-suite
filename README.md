@@ -25,7 +25,7 @@ import {AbstractAppTestSuite} from '@nestjs-toolkit/test-suite';
 export class MainSuite extends AbstractAppTestSuite {
     protected async createTestingModule(): Promise<TestingModule> {
         const module = Test.createTestingModule({
-            imports: [CalcModule],
+            imports: [AppModule],
         });
 
         return module.compile();
@@ -53,7 +53,13 @@ import {AbstractPersona} from '@nestjs-toolkit/test-suite/personas';
 import {AbstractAppTestSuite} from '@nestjs-toolkit/test-suite';
 import {MainSuite} from './main-suite';
 
-export class UserPersona extends AbstractPersona<{ id: number, email: string, roles: string[] }> {
+export type FakeUser = {
+    id: number,
+    email: string,
+    roles: string[]
+};
+
+export class UserPersona extends AbstractPersona<FakeUser> {
     public user: FakeUser = {
         id: 1,
         email: 'user@demo.com',
