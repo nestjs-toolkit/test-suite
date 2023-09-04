@@ -17,12 +17,16 @@ export abstract class AbstractAppTestSuite {
     this.app = this.createNestApplication();
 
     await this.beforeInitApp();
-
     await this.app.init();
+    await this.afterInitApp();
     await this.app.getHttpAdapter().getInstance().ready();
   }
 
   protected async beforeInitApp() {
+    return Promise.resolve();
+  }
+
+  protected async afterInitApp() {
     return Promise.resolve();
   }
 

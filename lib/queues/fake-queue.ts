@@ -29,6 +29,16 @@ export class FakeQueue {
     return Promise.resolve(job);
   }
 
+  getJob(jobId: JobId): Promise<FakeJob | null> {
+    const job = this.storage.get(jobId);
+    return Promise.resolve(job || null);
+  }
+
+  removeJobs(pattern: string): Promise<void> {
+    this.storage.forget(pattern);
+    return Promise.resolve();
+  }
+
   addSync(jobName: string, data: any, opts?: JobOptions): FakeJob {
     const id: JobId = opts?.jobId || `${this.storage.count() + 1}`;
 
