@@ -9,7 +9,8 @@ export abstract class AbstractPersona<User extends UserPerson<any> = any> {
   public user: User;
   public suite: AbstractAppTestSuite;
   public context = new Map<string, any>();
-  private defaultHeaders: Record<string, string> = {};
+  public defaultHeaders: Record<string, string> = {};
+  public authHeader = { header: 'Authorization', prefix: 'Bearer ' };
 
   protected abstract isAuthorized(): boolean;
 
@@ -20,7 +21,10 @@ export abstract class AbstractPersona<User extends UserPerson<any> = any> {
       return this.suite
         .makeGql()
         .setHeaders(this.defaultHeaders)
-        .authorization(this.getJwt());
+        .header(
+          this.authHeader.header,
+          `${this.authHeader.prefix || ''}${this.getJwt()}`,
+        );
     }
 
     return this.suite.makeGql().setHeaders(this.defaultHeaders);
@@ -31,7 +35,10 @@ export abstract class AbstractPersona<User extends UserPerson<any> = any> {
       return this.suite
         .makeHttp()
         .setHeaders(this.defaultHeaders)
-        .authorization(this.getJwt());
+        .header(
+          this.authHeader.header,
+          `${this.authHeader.prefix || ''}${this.getJwt()}`,
+        );
     }
 
     return this.suite.makeHttp().setHeaders(this.defaultHeaders);
