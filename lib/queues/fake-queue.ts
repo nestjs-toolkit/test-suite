@@ -29,6 +29,19 @@ export class FakeQueue {
     return Promise.resolve(job);
   }
 
+  addBulk(
+    jobs: Array<{
+      name?: string | undefined;
+      data: any;
+      opts?: Omit<JobOptions, 'repeat'> | undefined;
+    }>,
+  ): Promise<Array<FakeJob>> {
+    const result = jobs.map((job) =>
+      this.add(job.name, job.data, job.opts as any),
+    );
+    return Promise.all(result);
+  }
+
   getJob(jobId: JobId): Promise<FakeJob | null> {
     const job = this.storage.get(jobId);
     return Promise.resolve(job || null);

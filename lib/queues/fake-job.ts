@@ -201,4 +201,8 @@ export class FakeJob<T = any> implements Job<T> {
       status: this.status,
     };
   }
+
+  extendLock(duration: number): Promise<number> {
+    throw new Error('Method not implemented.');
+  }
 }
