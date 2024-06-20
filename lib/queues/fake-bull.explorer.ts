@@ -110,7 +110,7 @@ export class FakeBullExplorer implements OnModuleInit {
     isRequestScoped: boolean,
     options?: ProcessOptions,
   ) {
-    let args: unknown[] = [options?.name, options?.concurrency];
+    let args: unknown[] = [options?.name];
 
     if (isRequestScoped) {
       const callback: ProcessCallbackFunction<unknown> = async (
