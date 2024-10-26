@@ -20,28 +20,28 @@ export abstract class AbstractPersona<User extends UserPerson<any> = any> {
     if (this.isAuthorized()) {
       return this.suite
         .makeGql()
-        .setHeaders(this.defaultHeaders)
+        .setHeaders(this.getDefaultHeaders())
         .header(
           this.authHeader.header,
           `${this.authHeader.prefix || ''}${this.getJwt()}`,
         );
     }
 
-    return this.suite.makeGql().setHeaders(this.defaultHeaders);
+    return this.suite.makeGql().setHeaders(this.getDefaultHeaders());
   }
 
   get http(): HttpClient {
     if (this.isAuthorized()) {
       return this.suite
         .makeHttp()
-        .setHeaders(this.defaultHeaders)
+        .setHeaders(this.getDefaultHeaders())
         .header(
           this.authHeader.header,
           `${this.authHeader.prefix || ''}${this.getJwt()}`,
         );
     }
 
-    return this.suite.makeHttp().setHeaders(this.defaultHeaders);
+    return this.suite.makeHttp().setHeaders(this.getDefaultHeaders());
   }
 
   get userId(): ObjectId {
@@ -54,6 +54,10 @@ export abstract class AbstractPersona<User extends UserPerson<any> = any> {
 
   setDefaultHeaders(headers: Record<string, string>) {
     this.defaultHeaders = headers;
+  }
+
+  public getDefaultHeaders(): Record<string, string> {
+    return this.defaultHeaders;
   }
 
   public async init() {
