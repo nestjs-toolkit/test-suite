@@ -82,6 +82,11 @@ export class AssertResponseGql {
     return this;
   }
 
+  public assertResultTruthy(): AssertResponseGql {
+    expect(this.firstResult).toBeTruthy();
+    return this;
+  }
+
   public assertException(): AssertResponseGql {
     this.assertStatusHttp(400);
     return this;

@@ -52,7 +52,7 @@ export abstract class AbstractPersona<User extends UserPerson<any> = any> {
     return new ObjectId(this.user.id);
   }
 
-  setDefaultHeaders(headers: Record<string, string>) {
+  public setDefaultHeaders(headers: Record<string, string>) {
     this.defaultHeaders = headers;
   }
 
