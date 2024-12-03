@@ -8,6 +8,7 @@ export type FakeJobProps<T = any> = {
   queueName: string;
   attemptsMade?: number;
   timestamp?: number;
+  queue: Queue<T>;
 };
 
 export class FakeJob<T = any> implements Job<T> {
@@ -42,6 +43,7 @@ export class FakeJob<T = any> implements Job<T> {
     this.data = props.data;
     this.opts = props.opts || {};
     this.timestamp = props.timestamp || Date.now();
+    this.queue = props.queue;
   }
 
   progress(): any;

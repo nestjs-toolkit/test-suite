@@ -1,6 +1,6 @@
 {
   "name": "@nestjs-toolkit/test-suite",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "Test suite for NestJS applications",
   "author": "Valmir Barbosa",
   "license": "MIT",

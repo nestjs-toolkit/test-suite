@@ -61,6 +61,7 @@ export class FakeQueue {
       opts,
       name: jobName,
       queueName: this.queueName,
+      queue: this as any,
     });
 
     this.storage.put(job.id, job);
