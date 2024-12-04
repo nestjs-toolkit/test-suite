@@ -8,7 +8,7 @@ export type FakeJobProps<T = any> = {
   queueName: string;
   attemptsMade?: number;
   timestamp?: number;
-  queue: Queue<T>;
+  queue?: Queue<T>;
 };
 
 export class FakeJob<T = any> implements Job<T> {
